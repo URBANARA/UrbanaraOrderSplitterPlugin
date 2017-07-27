@@ -1,9 +1,9 @@
 <?php
 
-namespace Urbanara\OrderSplitter\Splitter\Rules;
+namespace Urbanara\OrderSplitterPlugin\Splitter\Rules;
 
 use Sylius\Component\Core\Model\OrderInterface;
-use Urbanara\OrderSplitter\Splitter\SplitRuleInterface;
+use Urbanara\OrderSplitterPlugin\Splitter\SplitRuleInterface;
 
 class TwentyEightyRule extends AbstractShipmentSplitterRule implements SplitRuleInterface
 {

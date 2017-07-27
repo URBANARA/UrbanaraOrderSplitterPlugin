@@ -1,6 +1,6 @@
 <?php
 
-namespace Urbanara\OrderSplitter\DependencyInjection;
+namespace Urbanara\OrderSplitterPlugin\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

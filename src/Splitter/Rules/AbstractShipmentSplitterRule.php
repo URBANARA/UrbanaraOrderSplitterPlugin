@@ -1,6 +1,6 @@
 <?php
 
-namespace Urbanara\OrderSplitter\Splitter\Rules;
+namespace Urbanara\OrderSplitterPlugin\Splitter\Rules;
 
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\OrderInterface;

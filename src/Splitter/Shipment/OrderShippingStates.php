@@ -1,6 +1,6 @@
 <?php
 
-namespace Urbanara\OrderSplitter\Splitter\Shipment;
+namespace Urbanara\OrderSplitterPlugin\Splitter\Shipment;
 
 final class OrderShippingStates
 {
