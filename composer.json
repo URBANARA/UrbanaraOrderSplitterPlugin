@@ -1,6 +1,6 @@
 {
     "name": "urbanara/order-splitter-plugin",
-    "type": "sylius-plugin",
+    "type": "sylius-bundle",
     "description": "Order splitter plugin for Sylius.",
     "license": "MIT",
     "require": {
