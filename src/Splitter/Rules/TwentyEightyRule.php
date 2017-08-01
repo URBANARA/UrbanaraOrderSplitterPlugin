@@ -41,4 +41,12 @@ class TwentyEightyRule extends AbstractShipmentSplitterRule implements SplitRule
 
         return $buckets;
     }
+
+    /**
+     * @return string
+     */
+    public function getName() : string
+    {
+        return self::RULE_NAME;
+    }
 }

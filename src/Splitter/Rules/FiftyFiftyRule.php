@@ -42,4 +42,12 @@ class FiftyFiftyRule extends AbstractShipmentSplitterRule implements SplitRuleIn
 
         return $buckets;
     }
+
+    /**
+     * @return string
+     */
+    public function getName() : string
+    {
+        return self::RULE_NAME;
+    }
 }

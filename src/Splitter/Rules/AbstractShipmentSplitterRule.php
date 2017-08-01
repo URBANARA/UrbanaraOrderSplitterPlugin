@@ -13,8 +13,6 @@ abstract class AbstractShipmentSplitterRule
 
     const SHIPMENT_ZERO = 0;
 
-    const RULE_NAME = 'AbstractRule';
-
     /**
      * @param ShipmentInterface $newShipment
      * @param OrderInterface $order
@@ -39,10 +37,7 @@ abstract class AbstractShipmentSplitterRule
     /**
      * @return string
      */
-    public function getName() : string
-    {
-        return self::RULE_NAME;
-    }
+    abstract public function getName() : string;
 
     /**
      * @param OrderItemInterface[] $orderItems
