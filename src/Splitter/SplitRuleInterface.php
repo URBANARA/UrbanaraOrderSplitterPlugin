@@ -22,6 +22,11 @@ interface SplitRuleInterface
     public function getBuckets(OrderInterface $order): array;
 
     /**
+     * @return string
+     */
+    public function getName() : string;
+
+    /**
      * @param ShipmentInterface $newShipment
      * @param OrderInterface $order
      *

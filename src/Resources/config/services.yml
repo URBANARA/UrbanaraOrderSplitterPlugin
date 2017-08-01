@@ -7,6 +7,7 @@ services:
 
     urbanara.order_splitter.manager:
         class: Urbanara\OrderSplitterPlugin\Splitter\SplitManager
-        arguments: ['@sylius.factory.shipment']
+        arguments: ['@sylius.factory.shipment', '@logger']
         calls:
-            - [appendRule, ['@urbanara.order_splitter.rule.twenty_eighty', '@urbanara.order_splitter.rule.fifty_fifty']]
+            - [appendRule, ['@urbanara.order_splitter.rule.twenty_eighty']]
+            - [appendRule, ['@urbanara.order_splitter.rule.fifty_fifty']]

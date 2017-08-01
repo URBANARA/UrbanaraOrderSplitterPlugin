@@ -8,6 +8,8 @@ use Urbanara\OrderSplitterPlugin\Splitter\SplitRuleInterface;
 class FiftyFiftyRule extends AbstractShipmentSplitterRule implements SplitRuleInterface
 {
 
+    const RULE_NAME = 'FiftyFiftyRule';
+
     /**
      * @param OrderInterface $order
      *
