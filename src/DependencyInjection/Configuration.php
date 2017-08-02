@@ -13,20 +13,6 @@ final class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('order_splitter');
-
-        $rootNode
-            ->children()
-                ->arrayNode('split_by_total')
-                    ->useAttributeAsKey('country')
-                    ->prototype('integer')
-//                        ->children()
-//                            ->scalarNode('value')->end()
-//                        ->end()
-                    ->end()
-                ->end()
-            ->end()
-        ;
 
         return $treeBuilder;
     }

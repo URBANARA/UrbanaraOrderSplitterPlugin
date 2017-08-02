@@ -75,9 +75,7 @@ class SplitManager
         $shipmentZero = $order->getShipments()->get(0);
         foreach ($orderItemsBuckets as $index => $orderItems) {
             if ($index > 0) {
-                /**
-                 * @var ShipmentInterface $newShipment
-                 */
+                /** @var ShipmentInterface $newShipment */
                 $newShipment = $this->shipmentFactory->createNew();
                 $newShipment->setOrder($order);
                 $rule->setupShipment($newShipment, $order);

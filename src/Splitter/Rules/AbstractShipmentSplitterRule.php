@@ -2,7 +2,6 @@
 
 namespace Urbanara\OrderSplitterPlugin\Splitter\Rules;
 
-use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\Shipment;
@@ -45,10 +44,8 @@ abstract class AbstractShipmentSplitterRule
      */
     public function moveUnits($orderItems, ShipmentInterface $shipmentZero, ShipmentInterface $newShipment)
     {
-
         /** @var OrderItemInterface $item */
         foreach ($orderItems as $item) {
-
             foreach ($item->getUnits() as $unit) {
                 /** @var Shipment $shipmentZero */
                 $shipmentZero->removeUnit($unit);
