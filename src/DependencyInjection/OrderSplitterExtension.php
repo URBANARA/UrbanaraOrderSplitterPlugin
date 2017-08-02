@@ -9,7 +9,6 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 final class OrderSplitterExtension extends Extension
 {
-
     /**
      * {@inheritdoc}
      */
@@ -27,7 +26,6 @@ final class OrderSplitterExtension extends Extension
             $container,
             new FileLocator(__DIR__.'/../Resources/config')
         );
-        $loader->load('state_machine.yml');
         $loader->load('services.yml');
     }
 }
