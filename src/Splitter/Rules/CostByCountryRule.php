@@ -28,7 +28,7 @@ class CostByCountryRule extends AbstractShipmentSplitterRule implements SplitRul
     {
         $this->container = $container;
         $this->logger = $logger;
-        $this->config = $this->container->getParameter( 'urbanara_order_splitter.split_by_total');
+        $this->config = $this->container->getParameter( 'order_splitter.split_by_total');
     }
 
 

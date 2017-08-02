@@ -6,6 +6,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 final class OrderSplitterExtension extends Extension
 {
@@ -33,9 +34,20 @@ final class OrderSplitterExtension extends Extension
         $configuration = new Configuration();
         $processedConfig = $this->processConfiguration( $configuration, $configs );
 
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yml');
+
         // This is the KEY TO YOUR ANSWER
-        $container->setParameter( 'urbanara_order_splitter.split_by_total', $processedConfig[ 'split_by_total' ]);
+        $container->setParameter( 'order_splitter.split_by_total', $processedConfig[ 'split_by_total' ]);
 
         // Other stuff like loading services.yml
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAlias()
+    {
+        return 'order_splitter';
     }
 }
