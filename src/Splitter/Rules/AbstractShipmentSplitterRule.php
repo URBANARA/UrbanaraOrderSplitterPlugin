@@ -10,7 +10,6 @@ use Sylius\Component\Core\Model\ShipmentInterface;
 
 abstract class AbstractShipmentSplitterRule
 {
-
     const SHIPMENT_ZERO = 0;
 
     /**

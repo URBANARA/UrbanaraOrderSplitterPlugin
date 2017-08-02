@@ -15,6 +15,20 @@ final class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('urbanara_order_splitter');
 
+        $rootNode
+            ->children()
+                ->arrayNode('split_by_total')
+                    ->useAttributeAsKey('country')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('value')->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+
         return $treeBuilder;
     }
+
 }

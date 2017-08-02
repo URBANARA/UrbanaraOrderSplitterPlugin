@@ -5,9 +5,16 @@ services:
     urbanara.order_splitter.rule.fifty_fifty:
         class: Urbanara\OrderSplitterPlugin\Splitter\Rules\FiftyFiftyRule
 
+    urbanara.order_splitter.rule.cost_by_country:
+        class: Urbanara\OrderSplitterPlugin\Splitter\Rules\CostByCountryRule
+        arguments:
+            - '@service_container'
+            - '@logger'
+
     urbanara.order_splitter.manager:
         class: Urbanara\OrderSplitterPlugin\Splitter\SplitManager
         arguments: ['@sylius.factory.shipment', '@logger']
         calls:
             - [appendRule, ['@urbanara.order_splitter.rule.twenty_eighty']]
             - [appendRule, ['@urbanara.order_splitter.rule.fifty_fifty']]
+            - [appendRule, ['@urbanara.order_splitter.rule.cost_by_country']]
