@@ -1,20 +1,3 @@
-winzou_state_machine:
-    sylius_shipment:
-        states:
-            splitted: ~
-            awaiting: ~
-        transitions:
-            split:
-                from: [cart]
-                to: splitted
-    sylius_order_shipping:
-        callbacks:
-            after:
-                app_split_shipment:
-                    on: [request_shipping]
-                    do: ["@urbanara.order_splitter.manager", "executeRules"]
-                    args: ["object"]
-
 services:
     urbanara.order_splitter.rule.twenty_eighty:
         class: Urbanara\OrderSplitterPlugin\Splitter\Rules\TwentyEightyRule
