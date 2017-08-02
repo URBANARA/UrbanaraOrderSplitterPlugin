@@ -3,4 +3,4 @@ machine:
     version: 7.1.0
 test:
   override:
-    - php bin/phpspec run spec/ --format=pretty
+    - php vendor/bin/phpspec run spec/ --format=pretty
