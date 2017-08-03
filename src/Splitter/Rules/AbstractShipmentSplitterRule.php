@@ -50,7 +50,7 @@ abstract class AbstractShipmentSplitterRule
      * @param ShipmentInterface $shipmentZero
      * @param ShipmentInterface $newShipment
      */
-    private function moveUnits($orderItems, ShipmentInterface $shipmentZero, ShipmentInterface $newShipment)
+    protected function moveUnits($orderItems, ShipmentInterface $shipmentZero, ShipmentInterface $newShipment)
     {
         /** @var OrderItemInterface $item */
         foreach ($orderItems as $item) {
@@ -68,7 +68,7 @@ abstract class AbstractShipmentSplitterRule
      *
      * @return ShipmentInterface
      */
-    private function setupShipment(ShipmentInterface $newShipment, OrderInterface $order) : ShipmentInterface
+    protected function setupShipment(ShipmentInterface $newShipment, OrderInterface $order) : ShipmentInterface
     {
         $shipmentZero = $order->getShipments()->get(static::SHIPMENT_ZERO);
         $newShipment->setMethod($shipmentZero->getMethod());
