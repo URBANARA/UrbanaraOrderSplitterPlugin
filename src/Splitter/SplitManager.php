@@ -57,7 +57,7 @@ class SplitManager
             $this->logger->info('[OrderSplitter] Testing rule' . $rule->getName());
             if ($rule->match($order) === true) {
                 $this->logger->info('[OrderSplitter] Matched rule ' . $rule->getName());
-                $rule->apply($order, $this->shipmentFactory);
+                $rule->applyRule($order, $this->shipmentFactory);
                 break;
             }
         }
