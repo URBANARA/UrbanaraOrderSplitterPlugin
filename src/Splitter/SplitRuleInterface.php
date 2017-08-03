@@ -4,6 +4,7 @@ namespace Urbanara\OrderSplitterPlugin\Splitter;
 
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\ShipmentInterface;
+use Sylius\Component\Resource\Factory\FactoryInterface;
 
 interface SplitRuleInterface
 {
@@ -15,16 +16,22 @@ interface SplitRuleInterface
     public function match(OrderInterface $order): bool;
 
     /**
+     * @return string
+     */
+    public function getName() : string;
+
+    /**
+     * @param OrderInterface $order
+     * @param FactoryInterface $shipmentFactory
+     */
+    public function applyRule(OrderInterface $order, FactoryInterface $shipmentFactory);
+
+    /**
      * @param OrderInterface $order
      *
      * @return array
      */
-    public function getBuckets(OrderInterface $order): array;
-
-    /**
-     * @return string
-     */
-    public function getName() : string;
+    function getBuckets(OrderInterface $order): array;
 
     /**
      * @param ShipmentInterface $newShipment
@@ -32,7 +39,7 @@ interface SplitRuleInterface
      *
      * @return ShipmentInterface
      */
-    public function setupShipment(ShipmentInterface $newShipment, OrderInterface $order): ShipmentInterface;
+    function setupShipment(ShipmentInterface $newShipment, OrderInterface $order): ShipmentInterface;
 
     /**
      * @param $orderItems
@@ -41,5 +48,5 @@ interface SplitRuleInterface
      *
      * @return mixed
      */
-    public function moveUnits($orderItems, ShipmentInterface $shipmentZero, ShipmentInterface $newShipment);
+    function moveUnits($orderItems, ShipmentInterface $shipmentZero, ShipmentInterface $newShipment);
 }
