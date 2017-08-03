@@ -3,6 +3,7 @@
 namespace Urbanara\OrderSplitterPlugin\Splitter;
 
 use Sylius\Component\Core\Model\OrderInterface;
+use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\ShipmentInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
@@ -42,11 +43,9 @@ interface SplitRuleInterface
     function setupShipment(ShipmentInterface $newShipment, OrderInterface $order): ShipmentInterface;
 
     /**
-     * @param $orderItems
+     * @param OrderItemInterface[] $orderItems
      * @param ShipmentInterface $shipmentZero
      * @param ShipmentInterface $newShipment
-     *
-     * @return mixed
      */
     function moveUnits($orderItems, ShipmentInterface $shipmentZero, ShipmentInterface $newShipment);
 }
