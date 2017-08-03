@@ -4,7 +4,6 @@ namespace Urbanara\OrderSplitterPlugin\Splitter;
 
 use Psr\Log\LoggerInterface;
 use Sylius\Component\Core\Model\OrderInterface;
-use Sylius\Component\Core\Model\ShipmentInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 class SplitManager
