@@ -1,13 +1,4 @@
 services:
-    urbanara.order_splitter.rule.twenty_eighty:
-        class: Urbanara\OrderSplitterPlugin\Splitter\Rules\TwentyEightyRule
-
-    urbanara.order_splitter.rule.fifty_fifty:
-        class: Urbanara\OrderSplitterPlugin\Splitter\Rules\FiftyFiftyRule
-
     urbanara.order_splitter.manager:
         class: Urbanara\OrderSplitterPlugin\Splitter\SplitManager
         arguments: ['@sylius.factory.shipment', '@logger']
-        calls:
-            - [appendRule, ['@urbanara.order_splitter.rule.twenty_eighty']]
-            - [appendRule, ['@urbanara.order_splitter.rule.fifty_fifty']]

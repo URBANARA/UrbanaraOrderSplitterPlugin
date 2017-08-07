@@ -2,37 +2,12 @@
 
 namespace Urbanara\OrderSplitterPlugin\Splitter\Rules;
 
-use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\OrderInterface;
-use Sylius\Component\Core\Model\OrderItemInterface;
-use Sylius\Component\Core\Model\Shipment;
-use Sylius\Component\Core\Model\ShipmentInterface;
+use Sylius\Component\Resource\Factory\FactoryInterface;
 
 abstract class AbstractShipmentSplitterRule
 {
-
     const SHIPMENT_ZERO = 0;
-
-    /**
-     * @param ShipmentInterface $newShipment
-     * @param OrderInterface $order
-     *
-     * @return ShipmentInterface
-     */
-    public function setupShipment(ShipmentInterface $newShipment, OrderInterface $order) : ShipmentInterface
-    {
-        $shipmentZero = $order->getShipments()->get(static::SHIPMENT_ZERO);
-        $newShipment->setMethod($shipmentZero->getMethod());
-
-        return $newShipment;
-    }
-
-    /**
-     * @param OrderInterface $order
-     *
-     * @return array
-     */
-    abstract public function getBuckets(OrderInterface $order) : array;
 
     /**
      * @return string
@@ -40,21 +15,15 @@ abstract class AbstractShipmentSplitterRule
     abstract public function getName() : string;
 
     /**
-     * @param OrderItemInterface[] $orderItems
-     * @param ShipmentInterface $shipmentZero
-     * @param ShipmentInterface $newShipment
+     * @param OrderInterface $order
+     * @param FactoryInterface $shipmentFactory
      */
-    public function moveUnits($orderItems, ShipmentInterface $shipmentZero, ShipmentInterface $newShipment)
-    {
+    abstract public function applyRule(OrderInterface $order, FactoryInterface $shipmentFactory);
 
-        /** @var OrderItemInterface $item */
-        foreach ($orderItems as $item) {
-
-            foreach ($item->getUnits() as $unit) {
-                /** @var Shipment $shipmentZero */
-                $shipmentZero->removeUnit($unit);
-                $newShipment->addUnit($unit);
-            }
-        }
-    }
+    /**
+     * @param OrderInterface $order
+     *
+     * @return bool
+     */
+    abstract public function match(OrderInterface $order): bool;
 }
