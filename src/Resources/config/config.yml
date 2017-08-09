@@ -7,17 +7,18 @@ winzou_state_machine:
             split:
                 from: [cart]
                 to: splitted
-#            manual_split:
-#                from: [cart, splitted, request_shipping]
-#                to: request_shipping
     sylius_order_shipping:
         transitions:
             manual_split:
                 from: [ready, cart, splitted, request_shipping]
-                to: request_shipping
+                to: cart
         callbacks:
             after:
                 app_split_shipment:
                     on: [request_shipping]
+                    do: ["@urbanara.order_splitter.manager", "executeRules"]
+                    args: ["object"]
+                app_manual_split_shipment:
+                    on: [manual_split]
                     do: ["@urbanara.order_splitter.manager", "executeRules"]
                     args: ["object"]
