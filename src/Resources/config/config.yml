@@ -13,7 +13,7 @@ winzou_state_machine:
     sylius_order_shipping:
         transitions:
             manual_split:
-                from: [cart, splitted, request_shipping]
+                from: [ready, cart, splitted, request_shipping]
                 to: request_shipping
         callbacks:
             after:
