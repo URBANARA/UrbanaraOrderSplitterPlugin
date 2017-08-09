@@ -7,10 +7,14 @@ winzou_state_machine:
             split:
                 from: [cart]
                 to: splitted
+#            manual_split:
+#                from: [cart, splitted, request_shipping]
+#                to: request_shipping
+    sylius_order_shipping:
+        transitions:
             manual_split:
                 from: [cart, splitted, request_shipping]
                 to: request_shipping
-    sylius_order_shipping:
         callbacks:
             after:
                 app_split_shipment:
