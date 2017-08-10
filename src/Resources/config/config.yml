@@ -8,9 +8,17 @@ winzou_state_machine:
                 from: [cart]
                 to: splitted
     sylius_order_shipping:
+        transitions:
+            manual_split:
+                from: [ready, cart, splitted, request_shipping]
+                to: ready
         callbacks:
             after:
                 app_split_shipment:
                     on: [request_shipping]
+                    do: ["@urbanara.order_splitter.manager", "executeRules"]
+                    args: ["object"]
+                app_manual_split_shipment:
+                    on: [manual_split]
                     do: ["@urbanara.order_splitter.manager", "executeRules"]
                     args: ["object"]
