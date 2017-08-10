@@ -11,7 +11,7 @@ winzou_state_machine:
         transitions:
             manual_split:
                 from: [ready, cart, splitted, request_shipping]
-                to: cart
+                to: ready
         callbacks:
             after:
                 app_split_shipment:
