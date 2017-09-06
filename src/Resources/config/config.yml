@@ -5,7 +5,7 @@ winzou_state_machine:
             awaiting: ~
         transitions:
             split:
-                from: [cart]
+                from: [ready, cart]
                 to: splitted
     sylius_order_shipping:
         transitions:
